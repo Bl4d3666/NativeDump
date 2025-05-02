@@ -44,6 +44,9 @@ You can find the project in different flavours (or languages):
 
 - [crystal-flavour](https://github.com/ricardojoserf/NativeDump/tree/crystal-flavour) - **Crystal** implementation with ntdll.dll overwrite capabilities
 
+- [nim-flavour](https://github.com/ricardojoserf/NativeDump/tree/nim-flavour) - **Nim** implementation with ntdll.dll overwrite capabilities
+
+  
 Other interesting branches using .NET:
 
 - [remote](https://github.com/ricardojoserf/NativeDump/tree/remote) - Exfiltrate to remote machine + 3 ntdll.dll overwrite methods + Dynamic function resolution + String AES encryption + XOR-encoding Minidump content

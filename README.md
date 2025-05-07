@@ -21,14 +21,14 @@ NativeDump.exe [DUMP_FILE]
 
 ![poc](https://raw.githubusercontent.com/ricardojoserf/ricardojoserf.github.io/master/images/nativedump/Screenshot_1.png)
 
-The tool has been tested against Windows 10 and 11 devices with the most common security solutions (Microsoft Defender for Endpoints, Crowdstrike...) and is for now undetected. However, it does not work if PPL is enabled ~~or PEB structure is not readable~~. **Update**: Now it is possible to execute the programs without reading the PEB, check the [peb-unreadable branch](https://github.com/ricardojoserf/NativeDump/tree/peb-unreadable) :)
+The tool has been tested against the latest Windows versions with the most common security solutions (Microsoft Defender for Endpoints, CrowdStrike...) and works fine, but stealthiness will depend on the "flavour" you choose: use uncommon languages and customize the binaries for the best results! However, it does not work if PPL is enabled ~~or PEB structure is not readable~~. **Update**: Now it is possible to execute the programs without reading the PEB, check the [peb-unreadable branch](https://github.com/ricardojoserf/NativeDump/tree/peb-unreadable) :)
 
 Some benefits of this technique are:
 - It does not use the well-known dbghelp!MinidumpWriteDump function
 - It only uses functions from Ntdll.dll, so it is possible to bypass API hooking by remapping the library
 - The Minidump file does not have to be written to disk, you can transfer its bytes (encoded or encrypted) to a remote machine
 
-You can find the project in different flavours (or languages):
+You can find the project in different "flavours" (or languages):
 
 - [main](https://github.com/ricardojoserf/NativeDump/tree/main) - **.NET** basic implementation (this branch)
   
@@ -271,5 +271,11 @@ With this it is possible to traverse process memory by calling:
 
 After previous steps we have all that is necessary to create the Minidump file. We can create a file locally or send the bytes to a remote machine, with the possibility of encoding or encrypting the bytes before. Some of these possibilities are coded in the [delegates branch](https://github.com/ricardojoserf/NativeDump/tree/delegates), where the file created locally can be encoded with XOR, and in the [remote branch](https://github.com/ricardojoserf/NativeDump/tree/remote), where the file can be encoded with XOR before being sent to a remote machine.
 
+<br>
 
+-----------------------------
+
+## TrickDump
+
+For an alternative approach that avoids creating a Minidump file, check out [TrickDump](https://github.com/ricardojoserf/trickdump/): it generates three JSON files and a ZIP archive, and the Minidump is reconstructed on the attacker's machine. This can help evade security solutions that monitor for Minidump creation or exfiltration.
 <br>
